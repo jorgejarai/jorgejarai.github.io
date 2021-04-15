@@ -72,29 +72,32 @@
 <span class="token keyword">struct</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> num<span class="token punctuation">;</span>
     <span class="token keyword">char</span> tipo<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> peque<span class="token punctuation">;</span> <span class="token comment">// Esta notación permite definir una estructura al mismo tiempo</span>
-         <span class="token comment">// que creamos una variable de ese tipo</span>
+<span class="token punctuation">}</span> peque<span class="token punctuation">;</span> <span class="token comment">// Esta notación permite definir una estructura al</span>
+         <span class="token comment">// mismo tiempo que creamos una variable de ese tipo</span>
 
-<span class="token keyword">double</span> x <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span> <span class="token comment">// Variables comunes y corrientes como esta ya se almacenan</span>
-                <span class="token comment">// en el stack</span>
+<span class="token keyword">double</span> x <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">;</span> <span class="token comment">// Variables comunes y corrientes como esta</span>
+                <span class="token comment">// ya se almacenan en el stack</span>
 
-Persona <span class="token function">nic</span><span class="token punctuation">(</span><span class="token string">"Nicholas Cage"</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// La clase que creamos anteriormente</span>
+<span class="token comment">// La clase que creamos anteriormente</span>
+Persona <span class="token function">nic</span><span class="token punctuation">(</span><span class="token string">"Nicholas Cage"</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-Persona <span class="token operator">*</span>keanu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Persona</span><span class="token punctuation">(</span><span class="token string">"Keanu Reeves"</span><span class="token punctuation">,</span> <span class="token number">56</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// INNECESARIO</span>
-                                                  <span class="token comment">// Solo ocupa 28 bytes</span></code></pre></div>
+<span class="token comment">// INNECESARIO</span>
+<span class="token comment">// Solo ocupa 28 bytes (x86 modernos)</span>
+Persona <span class="token operator">*</span>keanu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Persona</span><span class="token punctuation">(</span><span class="token string">"Keanu Reeves"</span><span class="token punctuation">,</span> <span class="token number">56</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>Una excepción a esto son tipos como <code class="language-text">std::string</code> o <code class="language-text">std::vector</code>, los cuales solicitan ellos mismos memoria al <em>heap</em> y cuyo tamaño como tal solo corresponde a punteros y números que almacenan información sobre los datos que almacenan:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp">std<span class="token operator">::</span>string saludo <span class="token operator">=</span> <span class="token string">"¡Hola, mundo!"</span><span class="token punctuation">;</span>
 std<span class="token operator">::</span>vector primos<span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-std<span class="token operator">::</span>list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">*</span>lista <span class="token operator">=</span> <span class="token keyword">new</span> std<span class="token operator">::</span>list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// INNECESARIO</span>
-                                              <span class="token comment">// Tanto ctor como dtor de std::list</span>
-                                              <span class="token comment">// ya contemplan solicitar memoria</span>
-                                              <span class="token comment">// del heap</span></code></pre></div>
+<span class="token comment">// INNECESARIO</span>
+<span class="token comment">// Tanto ctor como dtor de std::list</span>
+<span class="token comment">// ya contemplan solicitar memoria</span>
+<span class="token comment">// del heap</span>
+std<span class="token operator">::</span>list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token operator">*</span>lista <span class="token operator">=</span> <span class="token keyword">new</span> std<span class="token operator">::</span>list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>Luego, con respecto al <em>heap</em>, donde brilla es utilizándolo para almacenar grandes cantidades de información, ya sea un gran número de estructuras pequeñas, un número reducido de estructuras enormes o cualquier otra monstruosidad que su programa necesite:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// Definitivamente así no es cómo un juego guarda una textura,</span>
 <span class="token comment">// pero en memoria esto va a ocupar ~196 KiB, así que de</span>
-<span class="token comment">// guardarse en el stack lo vamos a llenar bien rápido. Por tanto,</span>
-<span class="token comment">// nos sirve para el ejemplo</span>
+<span class="token comment">// guardarse en el stack lo vamos a llenar bien rápido.</span>
+<span class="token comment">// Por tanto, nos sirve para el ejemplo</span>
 <span class="token keyword">class</span> <span class="token class-name">Textura</span> <span class="token punctuation">{</span>
 <span class="token keyword">private</span><span class="token operator">:</span>
     <span class="token keyword">char</span> r<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -104,8 +107,9 @@ std<span class="token operator">::</span>list<span class="token operator">&lt;</
     <span class="token comment">// ...</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token comment">// Esto va a ocupar ~4 MiB de memoria, así que, de guardarse en el stack,</span>
-<span class="token comment">// este no podría aguantar muchas variables como esta</span>
+<span class="token comment">// Esto va a ocupar ~4 MiB de memoria, así que, de guardarse</span>
+<span class="token comment">// en el stack, este no podría aguantar muchas variables</span>
+<span class="token comment">// como esta</span>
 Textura <span class="token operator">*</span>mapa_texs <span class="token operator">=</span> <span class="token keyword">new</span> Textura<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 <span class="token keyword">double</span> <span class="token operator">*</span>coefs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 8 KiB de memoria</span>
@@ -200,13 +204,20 @@ Textura <span class="token operator">*</span>jugador <span class="token operator
 <span class="token comment">// los contenidos del string</span>
 <span class="token function">imprimir_texto_mal</span><span class="token punctuation">(</span>texto_muy_largo<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>Todo esto que expliqué aplica únicamente para tipos que no son baratos de copiar o que simplemente no se pueden copiar (como <code class="language-text">std::unique_ptr</code>, que veremos prontamente). Tipos primitivos como <code class="language-text">int</code> o <code class="language-text">boolean</code> son baratísimos de copiar, por lo que la optimización de usar <code class="language-text">&amp;</code> cuando son parámetros de entrada es innecesaria:</p>
-<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Bien: Barato porque es una</span>
-                                  <span class="token comment">// referencia a constante</span>
-<span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span>std<span class="token operator">::</span>string s<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// Mal: Puede ser muy costoso</span>
-<span class="token keyword">void</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// OK: Imbatible. Podría hasta</span>
-                                  <span class="token comment">// ser copiado en un registro de CPU</span>
-<span class="token keyword">void</span> <span class="token function">f4</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Innecesario: Implica un paso extra</span>
-                                  <span class="token comment">// para convertir la referencia en un valor</span></code></pre></div>
+<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// Bien: Barato porque es una referencia a constante</span>
+<span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Mal: Puede ser muy costoso si el string es muy</span>
+<span class="token comment">// grande</span>
+<span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span>std<span class="token operator">::</span>string s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// OK: Imbatible. Podría hasta ser copiado en un</span>
+<span class="token comment">// registro de CPU</span>
+<span class="token keyword">void</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Innecesario: Implica una sobrecarga extra para</span>
+<span class="token comment">// convertir la referencia en un valor</span>
+<span class="token keyword">void</span> <span class="token function">f4</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <h4 id="parámetros-de-salida-out" style="position:relative;"><a href="#par%C3%A1metros-de-salida-out" aria-label="parámetros de salida out permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parámetros de salida (out)</h4>
 <p>Con parámetro de salida me refiero a aquel que, en vez de ser usado para que la función reciba datos, es usado para retornar información al programador. Esto incluye también al valor de retorno de la función en cierto modo.</p>
 <p>La mayoría de las veces va a ser posible retornar información como parte del retorno de una función sin mayor problema:</p>
@@ -242,7 +253,7 @@ std<span class="token operator">::</span>string <span class="token function">f6<
 <span class="token comment">// Saliendo del bucle, veremos que nums</span>
 <span class="token comment">// ahora contiene los números {2, 4,</span>
 <span class="token comment">// 6, 8, 10};</span></code></pre></div>
-<p>Con valores chicos como <code class="language-text">int</code>, no debería ser necesario usar referencias si no van a modificarlos, pero sin embargo recomiendo encarecidamente usar <code class="language-text">const</code> para evitar posibles <em>bugs</em> si terminan editando el valor involuntariamente:</p>
+<p>Con valores chicos como <code class="language-text">int</code>, no debería ser necesario usar referencias si no van a modificarlos, pero, sin embargo, recomiendo encarecidamente usar <code class="language-text">const</code> para evitar posibles <em>bugs</em> si terminan editando el valor involuntariamente:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     nun <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// En este caso el compilador</span>
               <span class="token comment">// saltará con un error</span>

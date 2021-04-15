@@ -66,22 +66,35 @@
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// Una variable se define de la forma</span>
 <span class="token comment">// &lt;tipo> &lt;nombre> [= &lt;valor inicial>];</span>
 
-<span class="token keyword">int</span> nice <span class="token operator">=</span> <span class="token number">69</span><span class="token punctuation">;</span>                 <span class="token comment">// Un número entero entre -2^31 y (2^31)-1</span>
-                               <span class="token comment">// en arquitecturas de PC modernas</span>
-<span class="token keyword">unsigned</span> poblacion <span class="token operator">=</span> <span class="token number">18730000</span><span class="token punctuation">;</span> <span class="token comment">// Un número sin signo entre 0 y (2^32)-1</span>
-<span class="token keyword">char</span> a_mayus <span class="token operator">=</span> <span class="token string">'A'</span><span class="token punctuation">;</span>            <span class="token comment">// Un número entre -128 y 127 (usualmente</span>
-                               <span class="token comment">// utilizado para caracteres ASCII básicos)</span>
-<span class="token keyword">float</span> un_medio <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span>          <span class="token comment">// Un número flotante de precisión simple (~7 decimales)</span>
-<span class="token keyword">double</span> pi <span class="token operator">=</span> <span class="token number">3.141592653589793</span>  <span class="token comment">// Flotante de precisión doble (~15 decimales)</span>
+<span class="token comment">// Un número entero entre -2^31 y (2^31)-1</span>
+<span class="token comment">// en arquitecturas de PC modernas</span>
+<span class="token keyword">int</span> nice <span class="token operator">=</span> <span class="token number">69</span><span class="token punctuation">;</span>
 
-<span class="token keyword">bool</span> es_verdad <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>        <span class="token comment">// Un valor booleano (verdadero/falso)</span>
+<span class="token comment">// Un número sin signo entre 0 y (2^32)-1</span>
+<span class="token keyword">unsigned</span> poblacion <span class="token operator">=</span> <span class="token number">18730000</span><span class="token punctuation">;</span>
 
-<span class="token keyword">char</span> saludo<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Hola"</span><span class="token punctuation">;</span>           <span class="token comment">// Una cadena de caracteres terminada en 0 y</span>
-                                  <span class="token comment">// de tamaño fijo (el 0 es implícito; lo</span>
-                                  <span class="token comment">// añade el ompilador)</span>
-std<span class="token operator">::</span>string despedida <span class="token operator">=</span> <span class="token string">"Hola"</span><span class="token punctuation">;</span>   <span class="token comment">// Una versión mejorada del ejemplo anterior</span>
-                                  <span class="token comment">// (permite un manejo de texto más simple y es</span>
-                                  <span class="token comment">// expandible)</span>
+<span class="token comment">// Un número entre -128 y 127 (usualmente</span>
+<span class="token comment">// utilizado para caracteres ASCII básicos)</span>
+<span class="token keyword">char</span> a_mayus <span class="token operator">=</span> <span class="token string">'A'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Un número flotante de precisión simple (~7 decimales)</span>
+<span class="token keyword">float</span> un_medio <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Flotante de precisión doble (~15 decimales)</span>
+<span class="token keyword">double</span> pi <span class="token operator">=</span> <span class="token number">3.141592653589793</span>
+
+<span class="token comment">// Un valor booleano (verdadero/falso)</span>
+<span class="token keyword">bool</span> es_verdad <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Una cadena de caracteres terminada en 0 y</span>
+<span class="token comment">// de tamaño fijo (el 0 es implícito; lo</span>
+<span class="token comment">// añade el ompilador)</span>
+<span class="token keyword">char</span> saludo<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Hola"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Una versión mejorada del ejemplo anterior</span>
+<span class="token comment">// (permite un manejo de texto más simple y es</span>
+<span class="token comment">// de tamaño variable)</span>
+std<span class="token operator">::</span>string despedida <span class="token operator">=</span> <span class="token string">"Hola"</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Si no se asigna un valor al definir la variable, su</span>
 <span class="token comment">// contenido quedará indeterminado (podría tomar</span>
@@ -90,9 +103,9 @@ std<span class="token operator">::</span>string despedida <span class="token ope
 
 <span class="token comment">// Sin embargo, esto no es necesariamente malo. Solo hay que</span>
 <span class="token comment">// tener cuidado y asignarle un valor antes de usarla</span>
-<span class="token keyword">int</span> indef<span class="token punctuation">;</span>
+<span class="token keyword">int</span> indet<span class="token punctuation">;</span>
 
-indef <span class="token operator">=</span> <span class="token number">420</span><span class="token punctuation">;</span> <span class="token comment">// Aquí le asignamos un valor. Nice</span></code></pre></div>
+indet <span class="token operator">=</span> <span class="token number">420</span><span class="token punctuation">;</span> <span class="token comment">// Aquí le asignamos un valor. Nice</span></code></pre></div>
 <p>Una variable puede definirse como constante (<code class="language-text">const</code>) si no se piensa modificar una vez creada:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">double</span> phi <span class="token operator">=</span> <span class="token number">1.618</span><span class="token punctuation">;</span>
 
@@ -137,7 +150,8 @@ phi <span class="token operator">=</span> <span class="token number">2.0</span><
 <div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">g++ -o funciones funciones.cpp</code></pre></div>
 <p>Lo que hacemos aquí es invocar al compilador <code class="language-text">g++</code> para que lea el archivo <code class="language-text">funciones.cpp</code>, lo procese y lo convierta en el ejecutable <code class="language-text">funciones</code> (<code class="language-text">funciones.exe</code> si se compila en Windows; el <code class="language-text">.exe</code> se debería añadir implícitamente).</p>
 <p>Este proceso es relativamente simple si solo queremos compilar un programa a partir de uno o dos archivos fuente. El problema viene cuando nuestro programa depende de varios archivos y no queremos llamar a <code class="language-text">g++</code> decenas de veces o escribir un comando que tome tres líneas de la pantalla. Para problemas como este existen soluciones como <code class="language-text">make</code> o CMake, las que podemos ver más adelante. Para proyectos simples, basta con una llamada a <code class="language-text">g++</code> siguiendo la siguiente sintaxis:</p>
-<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">g++ <span class="token punctuation">[</span>-o <span class="token operator">&lt;</span>nombre_ejecutable<span class="token operator">></span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>archivo_<span class="token operator"><span class="token file-descriptor important">1</span>></span>.cpp <span class="token operator">&lt;</span>archivo_<span class="token operator"><span class="token file-descriptor important">2</span>></span>.cpp <span class="token punctuation">..</span>. <span class="token operator">&lt;</span>archivo_n<span class="token operator">></span>.cpp</code></pre></div>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">g++ <span class="token punctuation">[</span>-o <span class="token operator">&lt;</span>nombre_ejecutable<span class="token operator">></span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>archivo_<span class="token operator"><span class="token file-descriptor important">1</span>></span>.cpp <span class="token punctuation">\</span>
+<span class="token operator">&lt;</span>archivo_<span class="token operator"><span class="token file-descriptor important">2</span>></span>.cpp <span class="token punctuation">..</span>. <span class="token operator">&lt;</span>archivo_n<span class="token operator">></span>.cpp</code></pre></div>
 <p>Si no especifican un nombre para el ejecutable con <code class="language-text">-o</code>, el compilador lo llamará <code class="language-text">a.out</code> (nota histórica: este nombre se remonta a cuando Linux aún no existía y x86 no era la arquitectura principal para sistemas UNIX).</p>
 <h2 id="bibliotecas" style="position:relative;"><a href="#bibliotecas" aria-label="bibliotecas permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bibliotecas</h2>
 <p>Además de las características propias del lenguaje (algunas de las cuales veremos después de esta sección), la librería estándar ofrece varias bibliotecas (que no son más que código ya escrito que implementa funcionalidades usadas a menudo por programadores) que nos permiten, por ejemplo, trabajar con entrada y salida de la terminal, lectura y escritura de archivos, el uso de contenedores para almacenar datos (como los vectores que ya he mencionado) y algoritmos de manipulación de datos, ordenamiento, entre muchos otros.</p>
@@ -163,9 +177,10 @@ phi <span class="token operator">=</span> <span class="token number">2.0</span><
                   <span class="token comment">// fondo del archivo)</span>
 
                   <span class="token comment">// Tanto C como C++ esperan que una función</span>
-                  <span class="token comment">// esté definida antes de llamarla. Una forma</span>
-                  <span class="token comment">// de sortear esto es poniendo el prototipo</span>
-                  <span class="token comment">// al inicio y definir la función después</span>
+                  <span class="token comment">// esté definida antes de llamarla. Una</span>
+                  <span class="token comment">// forma de sortear esto es poniendo el</span>
+                  <span class="token comment">// prototipo al inicio y definir la</span>
+                  <span class="token comment">// función después</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hacer_algo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -194,10 +209,12 @@ std<span class="token operator">::</span>cout <span class="token operator">&lt;&
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Cuál es tu nombre?\n"</span><span class="token punctuation">;</span>
 
     std<span class="token operator">::</span>string nombre<span class="token punctuation">;</span>
-    std<span class="token operator">::</span>cin <span class="token operator">>></span> nombre<span class="token punctuation">;</span> <span class="token comment">// En este caso, el operador >> indica</span>
-                        <span class="token comment">// que queremos extraer un string desde</span>
-                        <span class="token comment">// stdin (la entrada estándar) y guar-</span>
-                        <span class="token comment">// darlo en una variable</span>
+
+    <span class="token comment">// En este caso, el operador >> indica</span>
+    <span class="token comment">// que queremos extraer un string desde</span>
+    <span class="token comment">// stdin (la entrada estándar) y guar-</span>
+    <span class="token comment">// darlo en una variable</span>
+    std<span class="token operator">::</span>cin <span class="token operator">>></span> nombre<span class="token punctuation">;</span>
 
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Hola, "</span> <span class="token operator">&lt;&lt;</span> nombre <span class="token operator">&lt;&lt;</span> <span class="token string">"!\n"</span><span class="token punctuation">;</span>
 
@@ -208,7 +225,8 @@ std<span class="token operator">::</span>cout <span class="token operator">&lt;&
 <h3 id="condicionales-simples-if" style="position:relative;"><a href="#condicionales-simples-if" aria-label="condicionales simples if permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Condicionales simples (<code class="language-text">if</code>)</h3>
 <p>Los bloques <code class="language-text">if</code> son el tipo de estructura más simple. El programa verifica si una condición es verdadera o falsa y, dependiendo del resultado, ejecuta código:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// El programa ejecutará el código entre las llaves si 2 + 2 es igual a 4</span>
+    <span class="token comment">// El programa ejecutará el código entre las llaves</span>
+    <span class="token comment">// si 2 + 2 es igual a 4</span>
 
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"El universo está funcionando bien.\n"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -216,7 +234,7 @@ std<span class="token operator">::</span>cout <span class="token operator">&lt;&
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Nada que ver por aquí.\n"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Houston, tenemos un problema!\n"</span><span class="token punctuation">;</span>
+    std<span class="token operator">::</span>cerr <span class="token operator">&lt;&lt;</span> <span class="token string">"Houston, tenemos un problema!\n"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">int</span> numero <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
 
@@ -317,15 +335,20 @@ std<span class="token operator">::</span>cout <span class="token operator">&lt;&
 <h4 id="for-basado-en-rangos-controlado-por-colección" style="position:relative;"><a href="#for-basado-en-rangos-controlado-por-colecci%C3%B3n" aria-label="for basado en rangos controlado por colección permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code class="language-text">for</code> basado en rangos (controlado por colección)</h4>
 <p>Esta es una mis características favoritas del lenguaje y que fue implementada en C++11.</p>
 <p>Como veremos más adelante, la librería estándar de C++ nos ofrece una gran cantidad de estructuras que nos permiten almacenar información de diversas formas, siendo una de ellas <code class="language-text">std::vector</code>, la cual nos permite crear un arreglo expandible:</p>
-<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// Arreglo tradicional de tamaño fijo</span>
-arr<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span> <span class="token comment">// Esto no va a funcionar aunque quisiéramos</span>
+<div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// Arreglo tradicional de tamaño fijo</span>
+<span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Esto no va a funcionar aunque quisiéramos</span>
+arr<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
 
 std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vec<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// Vector expandible</span>
+
 vec<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Añadimos otro número al final del vector</span></code></pre></div>
 <p>¿Por qué menciono esto antes de explicar bien lo que es un vector? Porque algo que se hace muy a menudo con estructuras como esta es recorrer todos los elementos de esta y hacer alguna acción con ellos. La forma tradicional de hacer esto hasta 2011 era la siguiente:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp">std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vec<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token keyword">for</span> <span class="token punctuation">(</span>std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator it <span class="token operator">=</span> vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it <span class="token operator">!=</span> vec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator it<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>it <span class="token operator">=</span> vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it <span class="token operator">!=</span> vec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// ...</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>¿Engorroso, no es así? Fue por esto que en C++ se implementaron los <code class="language-text">for</code> basados en rango, los cuales simplifican esta sintaxis y la convierten en esto:</p>

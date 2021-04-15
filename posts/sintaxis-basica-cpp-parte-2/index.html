@@ -65,17 +65,19 @@
 <p>El archivo de cabecera de una clase puede verse de la siguiente forma:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// persona.h</span>
 
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">PERSONA_H </span><span class="token comment">// Estas líneas (llamadas directrices de preprocesador,</span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">PERSONA_H</span> <span class="token comment">// que, en este caso, forman un "include guard") le</span></span>
-                  <span class="token comment">// indican al compilador que lea este archivo sólo</span>
-                  <span class="token comment">// una vez, en caso de que sea utilizado en más de un sitio.</span>
-                  <span class="token comment">// Todo archivo .h debiera utilizarlas</span>
+<span class="token comment">// Estas líneas (llamadas directrices de preprocesador,</span>
+<span class="token comment">// que, en este caso, forman un "include guard") le</span>
+<span class="token comment">// indican al compilador que lea este archivo sólo</span>
+<span class="token comment">// una vez, en caso de que sea utilizado en más de un sitio.</span>
+<span class="token comment">// Todo archivo .h debiera utilizarlas</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">PERSONA_H</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">PERSONA_H</span></span>
 
-<span class="token comment">// Una alternativa no estándar pero soportada por la mayoría de</span>
-<span class="token comment">// los compiladores es #pragma once. Si usaran esta forma, omitan</span>
-<span class="token comment">// el include guard (las líneas que parten con #ifndef y #define y</span>
-<span class="token comment">// la línea #endif al final del documento). Solo deberían usar</span>
-<span class="token comment">// una de estas a la vez.</span>
+<span class="token comment">// Una alternativa no estándar pero soportada por la</span>
+<span class="token comment">// mayoría de los compiladores es #pragma once. Si usaran</span>
+<span class="token comment">// esta forma, omitan el include guard (las líneas que parten</span>
+<span class="token comment">// con #ifndef y #define y la línea #endif al final del</span>
+<span class="token comment">// documento). Solo deberían usar una de estas a la vez.</span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">once</span></span>
 
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
@@ -102,13 +104,14 @@
 <span class="token comment">// como la cara visible de la clase</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token comment">// Este es el constructor (puede haber más de uno), donde</span>
-    <span class="token comment">// se inicializa cada instancia de la clase, se definen sus</span>
-    <span class="token comment">// valores iniciales, entre otras cosas. Un constructor</span>
-    <span class="token comment">// no especifica un tipo de retorno.</span>
+    <span class="token comment">// se inicializa cada instancia de la clase, se definen</span>
+    <span class="token comment">// sus valores iniciales, entre otras cosas. Un</span>
+    <span class="token comment">// constructor no especifica un tipo de retorno.</span>
     <span class="token function">Persona</span><span class="token punctuation">(</span>std<span class="token operator">::</span>string nombre<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> edad<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token comment">// Estas funciones se denominan métodos. Los métodos pueden</span>
-    <span class="token comment">// acceder a los atributos de cada instancia y trabajar con estos.</span>
+    <span class="token comment">// Estas funciones se denominan métodos. Los métodos</span>
+    <span class="token comment">// pueden acceder a los atributos de cada instancia y</span>
+    <span class="token comment">// trabajar con estos.</span>
     std<span class="token operator">::</span>string <span class="token function">get_nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">unsigned</span> <span class="token function">get_edad</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -116,33 +119,38 @@
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span> <span class="token comment">// PERSONA_H      Omitir si usan #pragma once</span></span></code></pre></div>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// clase.cpp</span>
 
-<span class="token comment">// En este archivo vamos a implementar tanto el constructor como los</span>
-<span class="token comment">// dos métodos que están definidos en el archivo de cabecera.</span>
+<span class="token comment">// En este archivo vamos a implementar tanto el</span>
+<span class="token comment">// constructor como los dos métodos que están definidos</span>
+<span class="token comment">// en el archivo de cabecera.</span>
 
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"persona.h"</span></span>
 
-<span class="token comment">// Para implementar los métodos de una clase, anteponemos al nombre de</span>
-<span class="token comment">// cada uno el de la clase, seguido de ::</span>
+<span class="token comment">// Para implementar los métodos de una clase,</span>
+<span class="token comment">// anteponemos al nombre de cada uno el de la clase,</span>
+<span class="token comment">// seguido de ::</span>
 <span class="token class-name">Persona</span><span class="token operator">::</span><span class="token function">Persona</span><span class="token punctuation">(</span>std<span class="token operator">::</span>string nombre<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> edad<span class="token punctuation">)</span>
-  <span class="token operator">:</span> <span class="token function">nombre</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">edad</span><span class="token punctuation">(</span>edad<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// Esta es una notación especial que nos</span>
-                                 <span class="token comment">// permite asignar directamente el valor</span>
-                                 <span class="token comment">// de cada argumento con un atributo de</span>
-                                 <span class="token comment">// la clase (en este caso, el atributo</span>
-                                 <span class="token comment">// nombre recibe el valor del parámetro del</span>
-                                 <span class="token comment">// mismo nombre; lo mismo con edad)</span>
+  <span class="token operator">:</span> <span class="token function">nombre</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">edad</span><span class="token punctuation">(</span>edad<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Esta de arriba es una notación especial que nos</span>
+    <span class="token comment">// permite asignar directamente el valor de cada</span>
+    <span class="token comment">// argumento con un atributo de la clase (en este</span>
+    <span class="token comment">// caso, el atributo nombre recibe el valor del</span>
+    <span class="token comment">// parámetro del mismo nombre; lo mismo con edad)</span>
 
-    <span class="token comment">// Podemos hacer esto en lugar de la forma anterior si gustan</span>
+    <span class="token comment">// Podemos hacer esto en lugar de la forma</span>
+    <span class="token comment">// anterior si gustan</span>
     <span class="token comment">// this->nombre = nombre;</span>
     <span class="token comment">// this->edad = edad;</span>
 
-    <span class="token comment">// El puntero this nos permite acceder a todos los atributos de</span>
-    <span class="token comment">// la instancia actual de la clase. La usamos en este caso para evitar</span>
-    <span class="token comment">// ambigüedades (ya que atributo y parámetro se llaman igual)</span>
+    <span class="token comment">// El puntero this nos permite acceder a todos los</span>
+    <span class="token comment">// atributos de la instancia actual de la clase.</span>
+    <span class="token comment">// La usamos en este caso para evitar ambigüedades</span>
+    <span class="token comment">// (ya que atributo y parámetro se llaman igual)</span>
 <span class="token punctuation">}</span>
 
 std<span class="token operator">::</span>string <span class="token class-name">Persona</span><span class="token operator">::</span><span class="token function">get_nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">// Como en este caso no hay otro elemento llamado nombre</span>
-    <span class="token comment">// en la función, podemos prescindir del this-> con seguridad</span>
+    <span class="token comment">// Como en este caso no hay otro elemento llamado</span>
+    <span class="token comment">// nombre en la función, podemos prescindir del</span>
+    <span class="token comment">// this-> con seguridad</span>
     <span class="token keyword">return</span> nombre<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -152,21 +160,25 @@ std<span class="token operator">::</span>string <span class="token class-name">P
 <p>Luego, para utilizar la clase en nuestro código, podemos hacer lo siguiendo, sin olvidar incluir el archivo .cpp entre los que el compilador va a recibir:</p>
 <div class="gatsby-highlight" data-language="cpp"><pre class="language-cpp"><code class="language-cpp"><span class="token comment">// main.cpp</span>
 
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span>    <span class="token comment">// Los archivos de cabecera que son parte del</span></span>
-                       <span class="token comment">// proyecto debieran ser incluidos usando comillas</span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"persona.h"</span> <span class="token comment">// dobles (""), mientras que las librerías de sistema</span></span>
-                       <span class="token comment">// con &lt;></span>
+<span class="token comment">// Los archivos de cabecera que son parte del proyecto</span>
+<span class="token comment">// debieran ser incluidos usando comillas dobles (""),</span>
+<span class="token comment">// mientras que las librerías de sistema con &lt;></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"persona.h"</span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Persona <span class="token function">p</span><span class="token punctuation">(</span><span class="token string">"Juan López"</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Así creamos una instancia cuyo atributo</span>
-                                 <span class="token comment">// nombre contendrá el string "Juan López"</span>
-                                 <span class="token comment">// y edad el número 40. Noten que los argumentos</span>
-                                 <span class="token comment">// dados coinciden con los parámetros definidos</span>
-                                 <span class="token comment">// en persona.cpp y persona.h</span>
+    <span class="token comment">// Así creamos una instancia cuyo atributo</span>
+    <span class="token comment">// nombre contendrá el string "Juan López"</span>
+    <span class="token comment">// y edad el número 40. Noten que los argumentos</span>
+    <span class="token comment">// dados coinciden con los parámetros definidos</span>
+    <span class="token comment">// en persona.cpp y persona.h</span>
+    Persona <span class="token function">p</span><span class="token punctuation">(</span><span class="token string">"Juan López"</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> p<span class="token punctuation">.</span><span class="token function">get_nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" tiene "</span> <span class="token operator">&lt;&lt;</span> p<span class="token punctuation">.</span><span class="token function">get_edad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" años.\n"</span><span class="token punctuation">;</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> p<span class="token punctuation">.</span><span class="token function">get_nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" tiene "</span>
+              <span class="token operator">&lt;&lt;</span> p<span class="token punctuation">.</span><span class="token function">get_edad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" años.\n"</span><span class="token punctuation">;</span>
 
-    <span class="token comment">// Retornamos 0 para indicar que el programa se ejecutó exitosamente</span>
+    <span class="token comment">// Retornamos 0 para indicar que el programa</span>
+    <span class="token comment">// se ejecutó exitosamente</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>Podríamos compilar el programa con esta llamada a <code class="language-text">g++</code>:</p>
